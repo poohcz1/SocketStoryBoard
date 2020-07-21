@@ -12,57 +12,71 @@ import Alamofire
 
 class SocketIOManager: NSObject {
     
-    static let shared = SocketIOManager()
-//    var manager = SocketManager(socketURL: URL(string: "https://knowledgetalk.co.kr:7051/SignalServer")!, config: [.log(true), .compress])
-    var manager = SocketManager(socketURL: URL(string: "https://knowledgetalk.co.kr:7101")!, config: ["log": true,
-    "compress": true,
-    "forcePolling": true,
-    "forceNew": true])
+//    static let shared = SocketIOManager()
+    var manager: SocketManager?
     var socket: SocketIOClient!
     
-    struct chatType {
-        var type = -1
-        var message = ""
-    }
-    
     override init() {
-         print("흐름2")
         super.init()
-         print("흐름3")
-        socket = self.manager.socket(forNamespace: "/SignalServer")
-         print("흐름4")
-        socket.on("test") { dataArray, ack in
-            print("흐름5")
-            print(dataArray)
-        }
+        self.manager = SocketManager(socketURL: URL(string: "http://106.240.247.44:7605")!, config: [.log(true), .reconnects(true), .forceWebsockets(true)])
     }
+
 
     func establishConnection() {
-         print("흐름6")
+        socket = self.manager?.defaultSocket
+        socket = self.manager?.socket(forNamespace: "/SignalServer")
+        
+        socket.on("knowledgetalk"){data, ack in
+            print("데이터", data)
+        }
+        
+        socket.on(clientEvent: .error){data, ack in
+            print("에러", data)
+            
+        }
+        
+        socket.on(clientEvent: .connect){data, ack in
+            print("연결", data)
+            
+        }
+        
+        socket.on(clientEvent: .reconnect){data, ack in
+            print("재연결", data)
+            
+        }
+        
+        socket.on(clientEvent: .disconnect){data, ack in
+            print("재연결", data)
+            
+        }
         socket.connect()
-         print("흐름7")
-        
     }
     
-    func closeConnection() {
-         print("흐름8")
-        socket.disconnect()
-         print("흐름9")
-    }
-   
-    func sendMessage(message: String, nickname: String) {
-         print("흐름10")
-        socket.emit("knowledgetalk",  ["message" : "This is a test message"])
-        socket.emit("event1", [["name" : "ns"], ["em/Users/kp_mac/Downloads/아카이브 2/final/final/final/final/ParentInsertModel.swiftail" : "@naver.com"]])
-        socket.emit("event2", ["name" : "ns", "email" : "@naver.com"])
-        socket.emit("msg", ["nick": nickname, "msg" : message])
+    func addHandlers(){
         
     }
-    
-//    func bindMsg(){
-//        self.socket.on("test") {(dataArray, socketAck)
-//
-//        }
-//    }
-}
 
+   
+    func sendMessage() {
+        
+        let sample: [String: Any] = [
+            "eventOp": "Register",
+            "reqNo": "12213123",
+            "reqDate": "20200720213012"
+        ]
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: sample, options: [])
+            let jsonString = String(data: jsonData, encoding: String.Encoding.utf8)!
+            
+            socket.emit("knowledgetalk", jsonString)
+            
+        } catch {
+            
+        }
+        print(sample)
+
+        
+    }
+
+}

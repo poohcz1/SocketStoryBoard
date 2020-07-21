@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import SocketIO
 
 class FirstViewController: UIViewController {
 
     
     @IBOutlet weak var text1: UITextField!
     @IBOutlet weak var text2: UITextField!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +22,19 @@ class FirstViewController: UIViewController {
     }
     
     @IBAction func connectActionBtn(_ sender: UIButton) {
-        let network = SocketIOManager()
-        network.establishConnection()
+        let socketIoManager = SocketIOManager()
+        socketIoManager.establishConnection()
+        
     }
     
     @IBAction func disConnectedActionBtn(_ sender: UIButton) {
-        SocketIOManager.shared.closeConnection()
+       let socketManager = SocketIOManager()
+        socketManager.establishConnection()
     }
     
     @IBAction func sendMessageActionBtn(_ sender: UIButton) {
-        SocketIOManager.shared.sendMessage(message: text1.text!, nickname: text2.text!)
+        let socketManager = SocketIOManager()
+        socketManager.establishConnection()
     }
     
     
