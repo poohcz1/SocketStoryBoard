@@ -7,6 +7,7 @@ target 'SocketStoryBoard' do
 
 pod 'Socket.IO-Client-Swift', '~> 15.2.0'
 pod 'Alamofire', '~> 5.2'
+pod 'SwiftyJSON', '~> 4.0'
   # Pods for SocketStoryBoard
 
 end

@@ -10,10 +10,8 @@ import UIKit
 import SocketIO
 
 class FirstViewController: UIViewController {
-
-    
-    @IBOutlet weak var text1: UITextField!
-    @IBOutlet weak var text2: UITextField!
+   
+    let socketIoManager = SocketIOManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,21 +20,17 @@ class FirstViewController: UIViewController {
     }
     
     @IBAction func connectActionBtn(_ sender: UIButton) {
-        let socketIoManager = SocketIOManager()
-        socketIoManager.establishConnection()
-        
+       
     }
     
     @IBAction func disConnectedActionBtn(_ sender: UIButton) {
-       let socketManager = SocketIOManager()
-        socketManager.establishConnection()
+        if socketIoManager.establishConnection(receivedNum: 1) == false {
+            let resultAlert = UIAlertController(title: "결과", message: "서버를 종료합니다.", preferredStyle: UIAlertController.Style.alert)
+            let onAction = UIAlertAction(title: "네, 알겠습니다.", style: UIAlertAction.Style.default, handler: nil)
+            resultAlert.addAction(onAction)
+            present(resultAlert, animated: true, completion: nil)
+        }
     }
-    
-    @IBAction func sendMessageActionBtn(_ sender: UIButton) {
-        let socketManager = SocketIOManager()
-        socketManager.establishConnection()
-    }
-    
     
 
     /*

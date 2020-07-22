@@ -58,6 +58,7 @@
                                 <state key="normal" title="접속"/>
                                 <connections>
                                     <action selector="connectActionBtn:" destination="LFp-zq-0ut" eventType="touchUpInside" id="P7X-eI-49D"/>
+                                    <segue destination="TIM-Xk-Gqj" kind="push" id="siY-kc-sFV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jKG-nB-2OU">
@@ -68,35 +69,11 @@
                                     <action selector="disConnectedActionBtn:" destination="LFp-zq-0ut" eventType="touchUpInside" id="yep-xc-2wG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNC-Kq-vxJ">
-                                <rect key="frame" x="192" y="513" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="전송"/>
-                                <connections>
-                                    <action selector="sendMessageActionBtn:" destination="LFp-zq-0ut" eventType="touchUpInside" id="qux-1C-UaH"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ukd-Zw-58U">
-                                <rect key="frame" x="159" y="151" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8HD-gN-uO1">
-                                <rect key="frame" x="159" y="213" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Zpa-U8-KD8"/>
                     </view>
                     <navigationItem key="navigationItem" id="3fP-V9-wBy"/>
-                    <connections>
-                        <outlet property="text1" destination="ukd-Zw-58U" id="ksj-Ze-uTL"/>
-                        <outlet property="text2" destination="8HD-gN-uO1" id="Gak-ou-Lv5"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RB5-8Y-uuV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,13 +82,13 @@
         <!--Sign Up View Controller-->
         <scene sceneID="TVM-xB-1TL">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="TIM-Xk-Gqj" customClass="SignUpViewController" customModule="SocketStoryBoard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpBoardId" modalPresentationStyle="fullScreen" id="TIM-Xk-Gqj" customClass="SignUpViewController" customModule="SocketStoryBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4A4-uu-j84">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAC-JJ-jkl">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="아이디를 입력해 주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rR8-7g-m1Z">
                                         <rect key="frame" x="20" y="20" width="374" height="50"/>
@@ -130,7 +107,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XU2-1P-N9T">
-                                        <rect key="frame" x="20" y="748" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="655" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="gSr-Hw-Qgb"/>
                                         </constraints>
@@ -331,7 +308,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5VM-AW-Oj7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-365.21739130434787" y="36.830357142857139"/>
+            <point key="canvasLocation" x="-530" y="37"/>
         </scene>
         <!--Chat With Video View Controller-->
         <scene sceneID="JYp-G7-Ou3">

@@ -10,10 +10,6 @@ import Foundation
 import Alamofire
 import SocketIO
 
-protocol SignUpCheckProtocol: class {
-    func downloadData(items: NSArray)
-}
-
 class Network:NSObject{
     
     var manager = SocketManager(socketURL: URL(string: "https://knowledgetalk.co.kr:7101")!, config: ["log": true,

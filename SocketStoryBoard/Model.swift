@@ -9,6 +9,7 @@
 import Foundation
 
 class Model: NSObject {
+    
     var eventOp: String?
     var reqNo: String?
     var code: String?
